@@ -1,6 +1,16 @@
 package headfirst.designpatterns.factory.pizzas;
 
-public class SimplePizzaFactory {
+public class SimplePizzaFactory{
+	
+	private static SimplePizzaFactory factoryInstance;
+	
+	public static SimplePizzaFactory getInstance()
+	{
+	   if(factoryInstance == null){
+	      factoryInstance = new SimplePizzaFactory();
+	   }
+	return factoryInstance;
+	}
 
 	public Pizza createPizza(String type) {
 		Pizza pizza = null;
@@ -13,6 +23,8 @@ public class SimplePizzaFactory {
 			pizza = new ClamPizza();
 		} else if (type.equals("veggie")) {
 			pizza = new VeggiePizza();
+		} else if (type.equals("hawaiian")) {
+			pizza = new Hawaiianpizza();
 		}
 		return pizza;
 	}
